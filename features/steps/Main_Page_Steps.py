@@ -1,5 +1,9 @@
+from selenium.webdriver import Keys
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from behave import given, when, then
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 
@@ -16,13 +20,11 @@ def open_target_circle(context):
 @when('Click Sign In Button')
 def click_sign_in_button(context):
     context.driver.find_element(By.XPATH, "//span[text()='Sign in']").click()
-    sleep(2)
 
 
 @when('From right side navigation menu, click Sign In')
 def click_sign_in(context):
     context.driver.find_element(By.XPATH,"//a[@data-test='accountNav-signIn']").click()
-    sleep(2)
 
 
 @when('Find Benefits')

@@ -7,3 +7,4 @@ Feature: Search Test
     Given Open Target page
     When Search for mug
     Then Verify search results correct for mug
+

@@ -1,6 +1,9 @@
 from selenium.webdriver import Keys
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from behave import given, when, then
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 
@@ -9,7 +12,8 @@ def search_item(context, item):
     print(item)
     context.driver.find_element(By.ID, "search").send_keys(item)
     context.driver.find_element(By.XPATH, "//button[@data-test='@web/Search/SearchButton']").click()
-    sleep(10)
+    sleep(7)
+# my computer can runs test extremely slow with explicit wait
 
 
 @then('Verify search results correct for {item}')
