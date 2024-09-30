@@ -11,7 +11,7 @@ Feature: Cart
 
   Scenario: User can add item to cart
     Given Open Target page
-    When Search for plate
+    When Search for mug
     And Click Add to Cart button
     And Confirm Add to Cart
     And View Cart

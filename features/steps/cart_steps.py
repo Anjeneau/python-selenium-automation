@@ -1,5 +1,3 @@
-from lib2to3.fixes.fix_input import context
-
 from behave.runner import Context
 from selenium.webdriver import Keys
 from selenium.webdriver.chrome.service import Service
@@ -11,7 +9,8 @@ from time import sleep
 
 @when('Click on Cart icon')
 def cart_click(context):
-    context.driver.find_element(By.CSS_SELECTOR, "[data-test*='CartIcon']").click()
+    context.app.header.click_cart()
+   # context.driver.find_element(By.CSS_SELECTOR, "[data-test*='CartIcon']").click()
 
 
 @when('Click Add to Cart button')
@@ -23,17 +22,19 @@ def click_cart_button(context):
 
 @when('Confirm Add to cart')
 def confirm_cart(context):
-    context.driver.find_element(By.CSS_SELECTOR, "[data-test='shippingButton']").click()
+    context.driver.find_element(By.CSS_SELECTOR, "[data-test='content-wrapper'] [id*='addToCart']").click()
 
 
 @when('View Cart')
 def view_cart(context):
     context.driver.find_element(By.XPATH, "//a[text()='View cart & check out']").click()
+    sleep(4)
 
 
 @then('Verify “Your cart is empty” message is shown')
 def verify_empty_cart_message(context):
-    assert context.driver.find_element(By.CSS_SELECTOR, "[data-test='boxEmptyMsg']").is_displayed()
+    context.app.cart_page.verify_cart_empty()
+    #assert context.driver.find_element(By.CSS_SELECTOR, "[data-test='boxEmptyMsg']").is_displayed()
 
 
 @then('Verify cart has {amount} item')
