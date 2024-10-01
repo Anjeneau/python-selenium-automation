@@ -15,19 +15,22 @@ def cart_click(context):
 
 @when('Click Add to Cart button')
 def click_cart_button(context):
-    context.driver.find_element(By.CSS_SELECTOR, "[id*='addToCartButton']").click()
+    context.app.cart_page.add_to_cart()
+    #context.driver.find_element(By.CSS_SELECTOR, "[id*='addToCartButton']").click()
     sleep(7)
 # my computer can runs test extremely slow with explicit wait
 
 
 @when('Confirm Add to cart')
 def confirm_cart(context):
-    context.driver.find_element(By.CSS_SELECTOR, "[data-test='content-wrapper'] [id*='addToCart']").click()
+    context.app.cart_page.confirm_add_to_cart()
+    #context.driver.find_element(By.CSS_SELECTOR, "[data-test='content-wrapper'] [id*='addToCart']").click()
 
 
 @when('View Cart')
 def view_cart(context):
-    context.driver.find_element(By.XPATH, "//a[text()='View cart & check out']").click()
+    context.app.cart_page.view_cart_checkout()
+    #context.driver.find_element(By.XPATH, "//a[text()='View cart & check out']").click()
     sleep(4)
 
 
@@ -39,11 +42,13 @@ def verify_empty_cart_message(context):
 
 @then('Verify cart has {amount} item')
 def verify_cart_has_item(context, amount):
-    cart_sum = context.driver.find_element(By.CSS_SELECTOR, "[class='sc-93ec7147-3 fUVkzh']").text
-    assert f'{amount} item' in cart_sum
+    context.app.cart_page.verify_cart_item_amount(amount)
+    #cart_sum = context.driver.find_element(By.CSS_SELECTOR, "[class='sc-93ec7147-3 fUVkzh']").text
+    #assert f'{amount} item' in cart_sum
 
 
 @then('Verify cart has correct product')
 def verify_cart_has_correct_product(context):
-    actual_name = context.driver.find_element(By.CSS_SELECTOR, "[data-test*='cartItem']").text
-    print(f'Actual product in cart name: {actual_name}')
+    context.app.cart_page.verify_correct_product()
+    #actual_name = context.driver.find_element(By.CSS_SELECTOR, "[data-test*='cartItem']").text
+    #print(f'Actual product in cart name: {actual_name}')

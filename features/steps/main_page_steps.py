@@ -20,12 +20,14 @@ def open_target_circle(context):
 
 @when('Click Sign In Button')
 def click_sign_in_button(context):
-    context.driver.find_element(By.XPATH, "//span[text()='Sign in']").click()
+    context.app.header.click_sign_in()
+    #context.driver.find_element(By.XPATH, "//span[text()='Sign in']").click()
 
 
 @when('From right side navigation menu, click Sign In')
 def click_sign_in(context):
-    context.driver.find_element(By.XPATH,"//a[@data-test='accountNav-signIn']").click()
+    context.app.header.side_menu_signin()
+    #context.driver.find_element(By.XPATH,"//a[@data-test='accountNav-signIn']").click()
 
 
 @when('Find Benefits')
@@ -35,7 +37,8 @@ def find_benefits(context):
 
 @then('Verify Sign In form opened')
 def verify_sign_in_form(context):
-    assert context.driver.find_element(By.XPATH, "//span[text()='Sign into your Target account']")
+    context.app.signin_page.verify_signin_form()
+    #assert context.driver.find_element(By.XPATH, "//span[text()='Sign into your Target account']")
 
 
 @then('Verify Benefits')
