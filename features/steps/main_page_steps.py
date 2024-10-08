@@ -35,12 +35,6 @@ def find_benefits(context):
     context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/slingshot-components/CellsComponent/Link']").is_displayed()
 
 
-@then('Verify Sign In form opened')
-def verify_sign_in_form(context):
-    context.app.signin_page.verify_signin_form()
-    #assert context.driver.find_element(By.XPATH, "//span[text()='Sign into your Target account']")
-
-
 @then('Verify Benefits')
 def verify_benefits(context):
     assert context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/slingshot-components/CellsComponent/Link']")
