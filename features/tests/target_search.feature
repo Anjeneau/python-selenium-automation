@@ -8,3 +8,8 @@ Feature: Search Test
     When Search for mug
     Then Verify search results correct for mug
 
+    Scenario: User can see favorites tooltip for search results
+    Given Open Target page
+    When Search for tea
+    And Hover favorites icon
+    Then Favorites tooltip is shown

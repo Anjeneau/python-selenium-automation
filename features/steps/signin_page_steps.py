@@ -11,26 +11,38 @@ from time import sleep
 def open_signin(context):
     context.driver.get('https://www.target.com/account')
 
-
 @when('Click on Target terms and conditions link')
 def click_ttc_link(context):
     context.app.signin_page.click_ttc_link()
-
 
 @given('Store signin window')
 def store_window(context):
     context.signin_window = context.app.signin_page.get_current_window()
     print('Original window: ', context.signin_window)
 
+@when('Enter email or phone number {info}')
+def enter_email_phone(context, info):
+    context.app.signin_page.enter_email_phone(info)
+
+@when('Enter password {info}')
+def enter_password(context, info):
+    context.app.signin_page.enter_password(info)
+
+@when('Click Signin button')
+def click_signin_button(context):
+    context.app.signin_page.click_signin_button()
 
 @when('Switch to the newly opened window')
 def switch_to_window(context):
     context.app.signin_page.switch_to_new_window()
 
+@then('Verify "We can not find your account" message is shown')
+def verify_no_account_message(context):
+    context.app.signin_page.verify_no_account_message()
+
 @then('Verify Terms and Conditions page is opened')
 def verify_ttc_opened(context):
     context.app.signin_page.verify_ttc_opened()
-
 
 @then('Verify Sign In form opened')
 def verify_sign_in_form(context):

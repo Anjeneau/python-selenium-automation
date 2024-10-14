@@ -18,6 +18,15 @@ def search_item(context, item):
     sleep(7)
 # my computer can runs test extremely slow with explicit wait
 
+@when('Hover favorites icon')
+def hover_favorites(context):
+    context.app.search_results_page.hover_favorites()
+
+
+@then('Favorites tooltip is shown')
+def verify_favorites(context):
+    context.app.search_results_page.verify_favorites()
+
 
 @then('Verify search results correct for {item}')
 def verify_result(context, item):
