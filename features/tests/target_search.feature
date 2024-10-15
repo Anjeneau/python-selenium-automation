@@ -7,7 +7,7 @@ Feature: Search Test
     Given Open Target page
     When Search for mug
     Then Verify search results correct for mug
-
+@smoke
     Scenario: User can see favorites tooltip for search results
     Given Open Target page
     When Search for tea

@@ -8,7 +8,7 @@ Feature: Cart
     When Click on Cart icon
     Then Verify “Your cart is empty” message is shown
 
-
+@smoke
   Scenario: User can add item to cart
     Given Open Target page
     When Search for mug

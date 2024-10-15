@@ -16,7 +16,6 @@ Feature: Target Features
     And Click Signin button
     Then Verify "We can not find your account" message is shown
 
-
   Scenario: Verify Target Circle Benefits
     Given Open Target Circle page
     When Find Benefits
